@@ -1,0 +1,360 @@
+@import 'variables';
+
+http, body {
+  height: 100%;
+}
+
+.navbar {
+  color: $color-primary;
+}
+
+.text-main {
+  color: $color-primary;
+}
+
+.text-sub {
+  color: $color-secondary;
+}
+
+.text-variant {
+  color: $color-variant;
+}
+
+.row a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.row a:hover {
+  color: white;
+}
+
+.card a {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card a:hover {
+  color: $color-primary;
+}
+
+.bg-main {
+  background-color: $color-primary;
+  background-image: linear-gradient(
+    315deg,
+    $color-primary 0%,
+    $color-secondary 90%
+  );
+}
+
+.bg-sub {
+  background-color: $color-secondary;
+}
+
+.bg-variant {
+  background-color: $color-variant;
+  background-image: linear-gradient(
+    315deg,
+    $color-variant 0%,
+    $color-primary 90%
+  );
+}
+
+.card-category {
+  height: 250px;
+  width: 250px;
+  border-radius: 50px !important;
+  background: #fff;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.card-category:hover {
+  transform: scale(1.05);
+  background: $color-primary;
+}
+
+.card-category:hover .card-title {
+  color: white;
+}
+
+.card-join {
+  width: 350px;
+  border: 5px solid white;
+  font-size: 40px;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  background: $color-primary;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.card-join:hover {
+  transform: scale(1.05);
+}
+
+.card-step {
+  height: 350px;
+  width: 350px;
+  border-radius: 50px !important;
+  background: #fff;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  transition: 0.5s;
+}
+
+.card-step:hover {
+  transform: scale(1.05);
+  background: $color-primary;
+}
+
+.card-step:hover .card-title {
+  color: white;
+}
+
+//login components
+.login-container {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 700px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 400px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  padding: 40px;
+}
+
+.login-card .alert {
+  margin-top: 40px;
+}
+
+.login-card .alert .btn-close {
+  font-size: 8px;
+  height: 100%;
+  margin-top: -20px;
+}
+
+.login-card .form-control {
+  width: 100%;
+  border: none;
+  position: relative;
+  margin-top: 40px;
+  padding: 0;
+}
+
+.login-card .form-control input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid;
+    padding: 0;
+}
+
+.login-card .form-control span {
+  position: absolute;
+  border-bottom: 3px solid $color-variant;
+  top: 38px;
+  left: 0px;
+  width: 0%;
+  transition: 0.3s;
+}
+
+.login-card .form-control input:focus ~ span {
+  width: 100%;
+}
+
+.login-card .form-control.error small {
+  color: $color-error;
+}
+
+.login-card .form-control.error input {
+  color: $color-error;
+  border-bottom: 3px solid $color-error;
+}
+
+.login-card button {
+  margin-top: 25px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.login-card button:hover {
+  transform: scale(1.03);
+  opacity: 95%;
+}
+
+.login-card .register-link {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.login-card .register-link a {
+  color: $color-variant;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+//post-register
+.post-register-container {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 700px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-register-card {
+  width: 800px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  padding: 40px;
+}
+
+.post-register-card h1 {
+  text-align: center;
+}
+
+.post-register-card .form-control {
+  width: 100%;
+  border: none;
+  position: relative;
+  margin-top: 40px;
+}
+
+.post-register-card .form-control input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid;
+}
+
+.post-register-card .form-control span {
+  position: absolute;
+  border-bottom: 3px solid $color-variant;
+  top: 68px;
+  left: 12px;
+  width: 0%;
+  transition: 0.3s;
+}
+
+.post-register-card .form-control input:focus ~ span {
+  width: 93%;
+}
+
+.post-register-card .form-control.error small {
+  color: $color-error;
+}
+
+.post-register-card .form-control.error input {
+  color: $color-error;
+  border-bottom: 3px solid $color-error;
+}
+
+.post-register-card button {
+  margin-top: 30px;
+  width: 50%;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.post-register-card button:hover {
+  transform: scale(1.03);
+  opacity: 95%;
+}
+
+//misc
+.gradient-text {
+  text-transform: uppercase;
+  background: linear-gradient(to right, $color-primary 0%, $color-variant 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 300px;
+}
+
+.gradient-text:hover {
+  transform: scale(1.03);
+}
+
+//job button
+.card .job-button {
+  margin-top: 25px;
+  width: 500px;
+  height: 75px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.card .job-button:hover {
+  transform: scale(1.03);
+  opacity: 95%;
+}
+
+.card .apply-button {
+  margin-top: 25px;
+  width: 50%;
+  min-width: 250px;
+  height: 75px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  color: white;
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  font-size: 32px;
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.card .apply-button:hover {
+  transform: scale(1.03);
+  opacity: 95%;
+}

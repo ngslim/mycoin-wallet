@@ -1,0 +1,101 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+<div class='container-fluid'>
+  <div class='row h-100'>
+    <div style="background-color: #f6f4fb;" class='col-4'>
+      <h1 style="font-family: 'Lobster', cursive; 
+    background: -webkit-linear-gradient(#b848ff, #704bff); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; padding-top: 16px;">My Coin</h1>
+      <div class="input-group mb-3 mt-3">
+        <div class="input-group-prepend">
+          <span style="border-radius: .75rem 0 0 .75rem; background-color: #f6f4fb; padding: 12;" class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+        </div>
+        <input type="text" class="form-control" style="border-radius: 0 .75rem .75rem 0; background-color: #f6f4fb; border-left: 0; padding: 8;" placeholder="Search networks" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="container-fluid" style="padding: 0">
+        <div class="coin-tab row align-items-center" style="background-color: #e6e2e8; margin: 0; height: 42px; border-radius: .75rem">
+          <div class="col-2 col-xl-1">
+            <div class="icon" style="background-color: #ffffff; width: 24px; border-radius: 50%; font-weight: 500; text-align: center;">$</div>
+          </div>
+          <div class= "col-10 col-xl-11" style="font-weight: 500;">My Chain</div>
+        </div>
+      </div>
+    </div>
+    <div class='col-8'>
+      <div class='row align-items-center'>
+        <div class='d-flex justify-content-left' style="border-bottom: 3px solid #f0f0f0;">
+          <img src="./img/avatar.png" style="width: 50px; border-radius: 50%; margin: 10px">
+          <div class="container-fluid" style="padding-left: 12px">
+            <div class="row mt-2" style="font-weight: 500;">My Wallet</div>
+            <div class="row mt-2">
+              <div class="text-truncate" style="max-width:150px; padding: 0; cursor:pointer;" id="publicKey" onclick="copyPublicKey()">{{session.Wallet.publicKey}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row m-3">
+        <h2 style="font-weight: 700;"> {{balance}} MCC </h2>
+        <h4> {{balance}} USD </h4>
+      </div>
+      <form method='post' action='/create-transaction' id='transaction-form'>
+      <div class="row m-3">
+        <div class="input-group input-group-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text" style="height: 60px; width: 80px; border-radius: .75rem 0 0 .75rem; font-size: 20px;" id="inputGroup-sizing-lg">From: </span>
+          </div>
+          <input type="text" class="form-control" style="border-radius: 0 .75rem .75rem 0;" aria-label="Large" placeholder="{{session.Wallet.publicKey}}" aria-describedby="inputGroup-sizing-sm" disabled>
+        </div>
+      </div>
+      <div class="row m-3">
+        <div class="input-group input-group-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text" style="height: 60px; width: 80px; border-radius: .75rem 0 0 .75rem; font-size: 20px;" id="inputGroup-sizing-lg">To: </span>
+          </div>
+          <input id='target' name='target' type="text" style="border-radius: 0 .75rem .75rem 0;" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+        </div>
+      </div>
+      <div class="row m-3">
+        <div class="input-group input-group-lg" style="height:100px">
+          <input id='amount' name='amount' type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" style="border-radius: .75rem; font-size: 48px;" class="form-control" aria-label="Large"
+            aria-describedby="inputGroup-sizing-sm">
+        </div>
+      </div>
+      <div class="row m-3">
+        <div class="input-group input-group-lg">
+          <input id='privateKey' name='privateKey' type="text" style="border-radius: .75rem;" class="form-control" placeholder="Your private key"
+            aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+        </div>
+      </div>
+      {{#if message}}
+        <div class='alert alert-danger alert-dismissible fade show m-4' style="height:58px;" role='alert'>
+          {{message}}
+          <div type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></div>
+        </div>
+      {{/if}}
+      <div class="row m-4 justify-content-end" style="position:fixed; bottom:100; right: 10px">
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 300px;">Send</button>
+      </div>
+      </form>
+      <div class="spacer"></div>
+      <div class="row align-items-center" style="position:fixed; bottom:0; width:100%; border-top: 3px solid #f0f0f0; height: 100px;">
+        <div class="col-4 text-center text-primary">
+          <i class="bi bi-send"></i>
+          <h5>Send</h5>
+        </div>
+        <div class="col-4 text-center text-muted" style="cursor: pointer;" onclick='window.location="/transaction";'>
+          <i class="bi bi-clock-history"></i>
+          <h5>Transaction History</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function copyPublicKey(){
+    var copyText = document.getElementById("publicKey");
+    navigator.clipboard.writeText(copyText.innerHTML);
+  }
+</script>

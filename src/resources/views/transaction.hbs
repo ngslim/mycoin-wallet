@@ -1,0 +1,94 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+<div class='container-fluid'>
+    <div class='row h-100'>
+        <div style="background-color: #f6f4fb;" class='col-4'>
+            <h1 style="font-family: 'Lobster', cursive; 
+    background: -webkit-linear-gradient(#b848ff, #704bff); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; padding-top: 16px;">My Coin</h1>
+            <div class="input-group mb-3 mt-3">
+                <div class="input-group-prepend">
+                    <span style="border-radius: .75rem 0 0 .75rem; background-color: #f6f4fb; padding: 12;"
+                        class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                </div>
+                <input type="text" class="form-control"
+                    style="border-radius: 0 .75rem .75rem 0; background-color: #f6f4fb; border-left: 0; padding: 8;"
+                    placeholder="Search networks" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="container-fluid" style="padding: 0">
+                <div class="coin-tab row align-items-center"
+                    style="background-color: #e6e2e8; margin: 0; height: 42px; border-radius: .75rem">
+                    <div class="col-2 col-xl-1">
+                        <div class="icon"
+                            style="background-color: #ffffff; width: 24px; border-radius: 50%; font-weight: 500; text-align: center;">
+                            $</div>
+                    </div>
+                    <div class="col-10 col-xl-11" style="font-weight: 500;">My Chain</div>
+                </div>
+            </div>
+        </div>
+        <div class='col-8'>
+            <div class='row align-items-center'>
+                <div class='d-flex justify-content-left' style="border-bottom: 3px solid #f0f0f0;">
+                    <img src="./img/avatar.png" style="width: 50px; border-radius: 50%; margin: 10px">
+                    <div class="container-fluid" style="padding-left: 12px">
+                        <div class="row mt-2" style="font-weight: 500;">My Wallet</div>
+                        <div class="row mt-2">
+                            <div class="text-truncate" style="max-width:150px; padding: 0; cursor:pointer;"
+                                id="publicKey" onclick="copyPublicKey()">{{session.Wallet.publicKey}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-3 mt-4 overflow-scroll" style="position:relative; bottom: 100px; top: 0;">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Signature</th>
+                            <th scope="col">From</th>
+                            <th scope="col">To</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Gas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each transactions}}
+                            <tr>
+                                <th scope="row">{{@index}}</th>
+                                <td class="text-truncate" style="max-width:350; cursor:pointer;"
+                                    onclick="navigator.clipboard.writeText(this.innerHTML);">{{this.signature}}</td>
+                                <td class="text-truncate" style="max-width:350; cursor:pointer;"
+                                    onclick="navigator.clipboard.writeText(this.innerHTML);">{{this.from}}</td>
+                                <td class="text-truncate" style="max-width:350; cursor:pointer;"
+                                    onclick="navigator.clipboard.writeText(this.innerHTML);">{{this.to}}</td>
+                                <td class="text-center">{{this.amount}}</td>
+                                <td class="text-center">{{this.gas}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="row align-items-center"
+                style="position:fixed; bottom:0; width:100%; border-top: 3px solid #f0f0f0; height: 100px;">
+                <div class="col-4 text-center text-muted"  style="cursor: pointer;"  onclick='window.location="/";'>
+                    <i class="bi bi-send"></i>
+                    <h5>Send</h5>
+                </div>
+                <div class="col-4 text-center text-primary" href='transaction'>
+                    <i class="bi bi-clock-history"></i>
+                    <h5>Transaction History</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyPublicKey() {
+        var copyText = document.getElementById("publicKey");
+        navigator.clipboard.writeText(copyText.innerHTML);
+    }
+</script>
